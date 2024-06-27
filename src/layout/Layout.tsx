@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
 type ScrollTopProps={
- children:any;
+ children:React.ReactNode;
 };
 
 function ScrollTop({ children}:ScrollTopProps) {

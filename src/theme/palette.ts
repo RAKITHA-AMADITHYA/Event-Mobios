@@ -13,15 +13,15 @@ function createGradient(color1: string, color2: string) {
 const PRIMARY = {
   lighter: "#D6E4FF",
   light: "#84A9FF",
-  main: "#1cc056",
-  dark: "#169944",
+  main: "#CB3066",
+  dark: "#16BFFD",
   darker: "#091A7A",
 };
 const SECONDARY = {
   lighter: "#D6E4FF",
   light: "#84A9FF",
-  main: "#1cc056",
-  dark: "#169944",
+  main: "#CB3066",
+  dark: "#16BFFD",
   darker: "#091A7A",
 };
 const INFO = {
@@ -132,6 +132,8 @@ const palette: { light: Palette; dark: Palette } = {
     tonalOffset: 1,
     getContrastText: (background: string) => background,
     augmentColor: (palette: PaletteAugmentColorOptions) => {
+      console.log(palette);
+
       const color: PaletteColor = {
         contrastText: "#ffff",
         dark: "#ffffff",
@@ -152,6 +154,8 @@ const palette: { light: Palette; dark: Palette } = {
     tonalOffset: 1,
     getContrastText: (background: string) => background,
     augmentColor: (palette: PaletteAugmentColorOptions) => {
+      console.log(palette);
+      
       const color: PaletteColor = {
         contrastText: "#ffff",
         dark: "#ffffff",
