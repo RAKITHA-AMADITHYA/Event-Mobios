@@ -7,15 +7,22 @@ import { NAV_LINKS } from "../utils/constants";
 
 const Header = () => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpenLogin = () => {
+    setOpenLogin(true);
   };
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseLogin = () => {
+    setOpenLogin(false);
   };
 
+  const handleOpenSignup = () => {
+    setOpenSignup(true);
+  };
+  const handleCloseSignup = () => {
+    setOpenSignup(false);
+  };
 
   return (
     <>
@@ -38,7 +45,7 @@ const Header = () => {
             LOGO
           </Typography>
         </Grid>
-        {/* Menue Icon */}
+        {/* Menu Icon */}
         <Grid
           item
           xs={2}
@@ -50,44 +57,65 @@ const Header = () => {
           alignItems={"center"}
         >
           <Badge color="primary">
-            <MenuIcon
-              color="action"
-              //  onClick={handleClick}
-            />
+            <MenuIcon color="action" />
           </Badge>
         </Grid>
 
         {/* Nav Link List */}
-        <Grid item lg={8} display={{ xs: 'none',lg: 'flex' }} justifyContent={'center'} alignItems={'center'} spacing={1} >
-                {NAV_LINKS.map((nav) => (
-                 
-                    <Box sx={{m:1.5}}>
-                    <Typography
-                      variant='h5'
-                      fontWeight={600}
-                      sx={{
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        '&:hover': { color: theme.palette.primary.main },
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      {nav.title}
-                    </Typography></Box>
-                ))}
+        <Grid
+          item
+          lg={8}
+          display={{ xs: "none", lg: "flex" }}
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={1}
+        >
+          {NAV_LINKS.map((nav) => (
+            <Box sx={{ m: 1.5 }} key={nav.title}>
+              <Typography
+                variant="h5"
+                fontWeight={600}
+                sx={{
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  "&:hover": { color: theme.palette.primary.main },
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {nav.title}
+              </Typography>
+            </Box>
+          ))}
         </Grid>
 
-        <Grid item lg={1} display={{ xs: 'none',lg: 'flex' }} justifyContent={'start'} alignItems={'center'} p={1}>
-          <Button variant="contained" fullWidth onClick={handleOpen}>Login</Button>
+        <Grid
+          item
+          lg={1}
+          display={{ xs: "none", lg: "flex" }}
+          justifyContent={"start"}
+          alignItems={"center"}
+          p={1}
+        >
+          <Button variant="contained" fullWidth onClick={handleOpenLogin}>
+            Login
+          </Button>
         </Grid>
-        <LoginModal open={open} onClose={handleClose}  />
+        <LoginModal open={openLogin} onClose={handleCloseLogin} />
 
-        <Grid item lg={1} display={{ xs: 'none',lg: 'flex' }} justifyContent={'center'} alignItems={'center'} p={1}>
-          <Button variant="outlined" fullWidth onClick={handleOpen}>Sign Up</Button>
+        <Grid
+          item
+          lg={1}
+          display={{ xs: "none", lg: "flex" }}
+          justifyContent={"center"}
+          alignItems={"center"}
+          p={1}
+        >
+          <Button variant="outlined" fullWidth onClick={handleOpenSignup}>
+            Sign Up
+          </Button>
         </Grid>
-        <SignupModal open={open} onClose={handleClose}  />
-                
+        <SignupModal open={openSignup} onClose={handleCloseSignup} />
       </Grid>
     </>
   );
