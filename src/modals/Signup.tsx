@@ -1,4 +1,7 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { Box, Card, Grid, Modal } from "@mui/material";
+import GuestImg from "../assets/images/forguest.png";
+import Organizer from "../assets/images/fororganizer.png";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface SignupModalProps {
   open: boolean;
@@ -6,6 +9,10 @@ interface SignupModalProps {
 }
 
 const SignupModal: React.FC<SignupModalProps> = ({ open, onClose }) => {
+  const handleCloseSignUp = () => {
+    onClose();
+  };
+
   return (
     <Modal
       open={open}
@@ -14,46 +21,52 @@ const SignupModal: React.FC<SignupModalProps> = ({ open, onClose }) => {
       aria-describedby="signup-modal-description"
     >
       <Box
-        sx={{
+         sx={{
           position: "absolute",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 400,
-          bgcolor: "background.paper",
-          border: "2px solid #000",
+          width: 550,
+          bgcolor: "#232323",
+          border: "2px solid #8e8e8e",
           boxShadow: 24,
-          p: 4,
+          p: 2,
+          borderRadius: 1,
+          color: "#FFF",
         }}
       >
-        <Typography id="signup-modal-title" variant="h6" component="h2">
-          Signup
-        </Typography>
-        <Typography id="signup-modal-description" sx={{ mt: 2, mb: 2 }}>
-          Please fill in the details to create an account.
-        </Typography>
-        <TextField
-          fullWidth
-          label="Name"
-          variant="outlined"
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          fullWidth
-          label="Email"
-          variant="outlined"
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          fullWidth
-          label="Password"
-          type="password"
-          variant="outlined"
-          sx={{ mb: 2 }}
-        />
-        <Button variant="contained" color="primary" fullWidth onClick={onClose}>
-          Sign Up
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "end", alignItems: "end" }}>
+          <CloseIcon onClick={handleCloseSignUp} sx={{ cursor: "pointer" }} />
+        </Box>
+        <Grid container spacing={2} p={2}>
+          <Grid item xs={6}>
+            <Card sx={{
+                overflow: "hidden",
+                cursor: "pointer",
+                "&:hover img": {
+                  transform: "scale(1.1)",
+                },
+              }}>
+              <img src={GuestImg}  style={{
+                  transition: "transform 0.3s ease-in-out",
+                }} width={'100%'} alt="Guest" />
+            </Card>
+          </Grid>
+          <Grid item xs={6}>
+            <Card sx={{
+                overflow: "hidden",
+                cursor: "pointer",
+                "&:hover img": {
+                  transform: "scale(1.1)",
+                },
+              }}>
+              <img src={Organizer}  style={{
+                  transition: "transform 0.3s ease-in-out",
+                }} width={'100%'} alt="Organizer" />
+            </Card>
+          </Grid>
+        </Grid>
+
       </Box>
     </Modal>
   );
