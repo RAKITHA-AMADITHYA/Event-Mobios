@@ -1,9 +1,22 @@
-import { Badge, Box, Button, Grid, Typography, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Badge, Box, Button, Grid, Typography, useTheme } from "@mui/material";
+import { useState } from "react";
+import LoginModal from "../modals/Login";
+import SignupModal from "../modals/Signup";
 import { NAV_LINKS } from "../utils/constants";
 
 const Header = () => {
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <>
       <Grid
@@ -66,12 +79,14 @@ const Header = () => {
         </Grid>
 
         <Grid item lg={1} display={{ xs: 'none',lg: 'flex' }} justifyContent={'start'} alignItems={'center'} p={1}>
-          <Button variant="contained" fullWidth>Login</Button>
+          <Button variant="contained" fullWidth onClick={handleOpen}>Login</Button>
         </Grid>
+        <LoginModal open={open} onClose={handleClose}  />
 
         <Grid item lg={1} display={{ xs: 'none',lg: 'flex' }} justifyContent={'center'} alignItems={'center'} p={1}>
-          <Button variant="outlined" fullWidth>Sign Up</Button>
+          <Button variant="outlined" fullWidth onClick={handleOpen}>Sign Up</Button>
         </Grid>
+        <SignupModal open={open} onClose={handleClose}  />
                 
       </Grid>
     </>
