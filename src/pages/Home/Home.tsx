@@ -6,12 +6,11 @@ import HomeText from "../../assets/images/hedding.png";
 import EventSearchField from "../../components/Event Search Feild/EventSearchFeild";
 import {
   EVENT_TYPES,
-  SEARCH_LINKS,
-  TRENDING_EVENTS,
-  UPCOMMING_EVENTS,
+  
 } from "../../utils/constants";
 import UpcommingECard from "../../components/Cards/Upcomming Events/UpcommingECard";
 import TrendingECard from "../../components/Cards/Trending Events/TrendingECard";
+import { SEARCH_LINKS, TRENDING_EVENTS, UPCOMMING_EVENTS } from "../../jsons/TestData";
 
 const Home = () => {
   const theme = useTheme();
