@@ -2,6 +2,7 @@ import { Box, Card, Grid, Modal } from "@mui/material";
 import GuestImg from "../assets/images/forguest.png";
 import Organizer from "../assets/images/fororganizer.png";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
 interface SignupModalProps {
   open: boolean;
@@ -9,8 +10,14 @@ interface SignupModalProps {
 }
 
 const SignupModal: React.FC<SignupModalProps> = ({ open, onClose }) => {
+  const navigate = useNavigate();
   const handleCloseSignUp = () => {
     onClose();
+  };
+
+  const handleCardClick = (path: string) => {
+    onClose();
+    navigate(path);
   };
 
   return (
@@ -46,7 +53,9 @@ const SignupModal: React.FC<SignupModalProps> = ({ open, onClose }) => {
                 "&:hover img": {
                   transform: "scale(1.1)",
                 },
-              }}>
+              }}  onClick = {
+                () => handleCardClick('/signup-guest')
+              }>
               <img src={GuestImg}  style={{
                   transition: "transform 0.3s ease-in-out",
                 }} width={'100%'} alt="Guest" />

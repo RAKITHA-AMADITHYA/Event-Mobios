@@ -1,20 +1,23 @@
 import { Box, Button, Grid, Typography, useTheme } from "@mui/material";
-import HomeImg from "../../assets/images/landingImg.png";
 import Background from "../../assets/images/background2.png";
+import HomeImg from "../../assets/images/landingImg.png";
 
 import HomeText from "../../assets/images/hedding.png";
+import TrendingECard from "../../components/Cards/Trending Events/TrendingECard";
+import UpcommingECard from "../../components/Cards/Upcomming Events/UpcommingECard";
 import EventSearchField from "../../components/Event Search Feild/EventSearchFeild";
+import { SEARCH_LINKS, TRENDING_EVENTS, UPCOMMING_EVENTS } from "../../jsons/TestData";
 import {
   EVENT_TYPES,
-  
 } from "../../utils/constants";
-import UpcommingECard from "../../components/Cards/Upcomming Events/UpcommingECard";
-import TrendingECard from "../../components/Cards/Trending Events/TrendingECard";
-import { SEARCH_LINKS, TRENDING_EVENTS, UPCOMMING_EVENTS } from "../../jsons/TestData";
 
 const Home = () => {
   const theme = useTheme();
+  // const navigate = useNavigate();
 
+  // const handleClick = (path: string) => {
+  //   navigate(path);
+  // };
   return (
     <>
       {/* Landing section */}

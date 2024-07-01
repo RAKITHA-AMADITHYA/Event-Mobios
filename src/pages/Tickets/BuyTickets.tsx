@@ -1,23 +1,21 @@
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import RoomIcon from "@mui/icons-material/Room";
+import ScheduleIcon from "@mui/icons-material/Schedule";
 import {
   Box,
   Button,
-  FormControlLabel,
   Grid,
-  Radio,
   RadioGroup,
-  Typography,
+  Typography
 } from "@mui/material";
-import BgImg from "../../assets/images/buyTicketBg.png";
-import poster from "../../assets/images/poster10.png";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import ScheduleIcon from "@mui/icons-material/Schedule";
-import RoomIcon from "@mui/icons-material/Room";
-import Countdown from "../../components/Count down box/Countdown";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { ARTIST_LINEUP, ORGANIZE } from "../../jsons/TestData";
-import EventRadio from "../../components/Event Radio/EventRadio";
 import { useState } from "react";
+import BgImg from "../../assets/images/buyTicketBg.png";
+import poster from "../../assets/images/poster10.png";
+import Countdown from "../../components/Count down box/Countdown";
+import EventRadio from "../../components/Event Radio/EventRadio";
+import { ARTIST_LINEUP, ORGANIZE } from "../../jsons/TestData";
 const BuyTickets = () => {
   const [selectedValue, setSelectedValue] = useState("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

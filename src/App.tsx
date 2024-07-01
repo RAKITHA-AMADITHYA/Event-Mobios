@@ -1,39 +1,85 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import ThemeProvider from "./theme";
+import React, { Suspense, lazy, ReactNode } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Loader from "./components/Loader/Loader";
 import Layout from "./layout/Layout";
-import BuyTickets from "./pages/Tickets/BuyTickets";
+import ThemeProvider from "./theme"; 
 
+const Home = lazy(() => import("./pages/Home/Home"));
+const BuyTickets = lazy(() => import("./pages/Tickets/BuyTickets"));
+const GuestLogin = lazy(() => import("./pages/login/GuestLogin"));
+const GuestSignup = lazy(() => import("./pages/signup/GuestSignup"));
 
-// const Home = lazy(() => import("./pages/Home"));
+interface SuspenseWrapperProps {
+  children: ReactNode;
+}
 
+const SuspenseWrapper: React.FC<SuspenseWrapperProps> = ({ children }) => {
+  return (
+    <Suspense
+      fallback={
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Loader />
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
+};
 
-// function SuspenseWrapper({ children }) {
-//   return (
-//     <Suspense
-//       fallback={
-//         <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-//           <LoadingAnimation type="line-scale" color="#FF4D00" active />
-//         </div>
-//       }
-//     >
-//       {children}
-//     </Suspense>
-//   );
-// }
-
-
-const App = () => {
+const App: React.FC = () => {
   return (
     <ThemeProvider>
       <Router>
         <Routes>
-        <Route  element={<Layout />} >
-
-          <Route path="/" element={<Home />} />
-          <Route path="/buy-tickets" element={<BuyTickets />} />
-
-          
+          <Route
+            path="/login-guest"
+            element={
+              <SuspenseWrapper>
+                <GuestLogin />
+              </SuspenseWrapper>
+            }
+          />
+          <Route
+            path="/signup-guest"
+            element={
+              <SuspenseWrapper>
+                <GuestSignup />
+              </SuspenseWrapper>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <SuspenseWrapper>
+                <Layout />
+              </SuspenseWrapper>
+            }
+          >
+            <Route
+              index
+              element={
+                <SuspenseWrapper>
+                  <Home />
+                </SuspenseWrapper>
+              }
+            />
+            <Route
+              path="buy-tickets"
+              element={
+                <SuspenseWrapper>
+                  <BuyTickets />
+                </SuspenseWrapper>
+              }
+            />
           </Route>
         </Routes>
       </Router>
