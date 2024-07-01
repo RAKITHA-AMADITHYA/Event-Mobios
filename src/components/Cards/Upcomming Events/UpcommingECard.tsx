@@ -18,7 +18,18 @@ const UpcommingECard: React.FC<UpcommingECardProps> = ({ image, title, date, tim
 
       <Grid container sx={{ mt: 2 }}>
         <Grid item xs={4}>
-          <img src={image} alt={title} />
+          <Box
+            component="img"
+            src={image}
+            alt={title}
+            sx={{
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.05)"
+              },
+              // width: "100%"
+            }}
+          />
         </Grid>
         <Grid item xs={6}>
           <Typography variant="h4">
@@ -50,7 +61,6 @@ const UpcommingECard: React.FC<UpcommingECardProps> = ({ image, title, date, tim
           <Button variant="outlined">More Info</Button>
         </Grid>
       </Grid>
-      {/* <Divider sx={{ mt: 2 }} /> */}
     </Box>
   );
 };

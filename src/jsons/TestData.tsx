@@ -6,6 +6,16 @@ import Poster5 from '../assets/images/poster5.png'
 import Poster6 from '../assets/images/poster6.png'
 import Poster7 from '../assets/images/poster7.png'
 import Poster8 from '../assets/images/poster8.png'
+import Artist1 from '../assets/images/artist1.png'
+import Artist2 from '../assets/images/artist2.png'
+import Artist3 from '../assets/images/artist3.png'
+import Artist4 from '../assets/images/artist4.png'
+import Organize from '../assets/images/organize.png'
+
+
+
+
+
 
 
 export const SEARCH_LINKS = 
@@ -96,5 +106,41 @@ export const TRENDING_EVENTS =
     "date": "10th November 2024",
     "time": "17:00 PM",
     "location": "Port city - colombo"
+  }
+]
+
+export const ARTIST_LINEUP = 
+[
+  {
+    "id": 1,
+    "image":Artist1,
+    "name": "Hana",
+    
+  },
+  {
+    "id": 2,
+    "image":Artist2,
+    "name": "Hana",
+    
+  },
+  {
+    "id": 3,
+    "image":Artist3,
+    "name": "Hana",
+    
+  },
+  {
+    "id": 4,
+    "image":Artist4,
+    "name": "Hana",
+    
+  },
+
+]
+
+export const ORGANIZE=[
+  {
+     id:1,
+    "image":Organize,
   }
 ]

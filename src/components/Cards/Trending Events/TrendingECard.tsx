@@ -15,7 +15,13 @@ const TrendingECard = ({ image, title, date, time, location }: CardProps) => {
   const theme = useTheme();
 
   return (
-    <Card sx={{m:1}}>
+    <Card sx={{
+      m: 1,
+      transition: "transform 0.3s ease-in-out",
+      "&:hover": {
+        transform: "scale(1.05)"
+      }
+    }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <img src={image} width={"100%"} alt="" />
       </Box>
